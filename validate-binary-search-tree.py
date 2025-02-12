@@ -19,6 +19,7 @@ inorder traversal of BST gives nodes in ascending sorted order
 class Solution(object):
     prev = None
     flag = True
+
     def isValidBST(self, root):
         """
         :type root: Optional[TreeNode]
@@ -30,13 +31,13 @@ class Solution(object):
     def helper(self,root):
         if root is None:return
 
-        self.isValidBST(root.left)
+        self.helper(root.left)
         if self.prev is not None and self.prev.val >= root.val:
             self.flag = False
 
         self.prev = root
         if self.flag:
-            self.isValidBST(root.right)
+            self.helper(root.right)
 
 # boolean recursive function
 class Solution(object):
